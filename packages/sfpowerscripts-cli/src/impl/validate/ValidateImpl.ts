@@ -341,6 +341,11 @@ export default class ValidateImpl {
       console.log(`Successfully authorized ${grant.username} with org ID ${grant.orgId}`);
       return grant.result;
     } catch (err) {
+      console.log('err.status: '+err.status);
+      console.log('err.message: '+err.message);
+      console.log('err.stderr: '+err.stderr);
+      console.log('err.stdout: '+err.stdout);
+      console.log('Full err: '+JSON.stringify(err));
       throw new Error(`Failed to authenticate to ${scratchOrgUsername}`);
     }
   }
