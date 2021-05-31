@@ -1,0 +1,244 @@
+{
+  "packageDirectories": [
+      {
+          "path": "src-01-frameworks",
+          "package": "Frameworks",
+          "versionName": "ver 0.1",
+          "versionNumber": "0.1.5.NEXT",
+          "default": false
+      },
+      {
+          "path": "src-02-common",
+          "package": "Common",
+          "versionName": "ver 0.1",
+          "versionNumber": "0.1.5.NEXT",
+          "default": false,
+          "dependencies": [
+              {
+                  "package": "Rollup Helper@15.11.0.10"
+              },
+              {
+                  "package": "Frameworks",
+                  "versionNumber": "0.1.5.LATEST"
+              }
+          ]
+      },
+      {
+          "path": "src-03-core-crm",
+          "package": "Core_CRM",
+          "versionName": "ver 0.1",
+          "versionNumber": "0.1.5.NEXT",
+          "default": false,
+          "dependencies": [
+              {
+                  "package": "Rollup Helper@15.11.0.10"
+              },
+              {
+                  "package": "Frameworks",
+                  "versionNumber": "0.1.5.LATEST"
+              },
+              {
+                  "package": "Common",
+                  "versionNumber": "0.1.5.LATEST"
+              }
+          ]
+      },
+      {
+          "path": "src-05-treatments-appointments",
+          "package": "Treatments_and_Appointments",
+          "versionName": "ver 0.1",
+          "versionNumber": "0.1.0.NEXT",
+          "default": false,
+          "dependencies": [
+              {
+                  "package": "Rollup Helper@15.11.0.10"
+              },
+              {
+                  "package": "Frameworks",
+                  "versionNumber": "0.1.5.LATEST"
+              },
+              {
+                  "package": "Common",
+                  "versionNumber": "0.1.5.LATEST"
+              },
+              {
+                  "package": "Core_CRM",
+                  "versionNumber": "0.1.5.LATEST"
+              }
+          ]
+      },
+      {
+          "path": "src-06-case-status-mgmt",
+          "package": "Case_Status_Management",
+          "versionName": "ver 0.1",
+          "versionNumber": "0.1.0.NEXT",
+          "default": false,
+          "dependencies": [
+              {
+                  "package": "Rollup Helper@15.11.0.10"
+              },
+              {
+                  "package": "Frameworks",
+                  "versionNumber": "0.1.5.LATEST"
+              },
+              {
+                  "package": "Common",
+                  "versionNumber": "0.1.5.LATEST"
+              },
+              {
+                  "package": "Core_CRM",
+                  "versionNumber": "0.1.5.LATEST"
+              }
+          ]
+      },
+      {
+          "path": "src-a-org-wide-automation",
+          "package": "Org_Wide_Automation",
+          "versionName": "ver 0.1",
+          "versionNumber": "0.1.0.NEXT",
+          "default": false,
+          "dependencies": [
+              {
+                  "package": "Rollup Helper@15.11.0.10"
+              },
+              {
+                  "package": "Frameworks",
+                  "versionNumber": "0.1.5.LATEST"
+              },
+              {
+                  "package": "Common",
+                  "versionNumber": "0.1.5.LATEST"
+              },
+              {
+                  "package": "Core_CRM",
+                  "versionNumber": "0.1.5.LATEST"
+              },
+              {
+                  "package": "Treatments_and_Appointments",
+                  "versionNumber": "0.1.0.LATEST"
+              }
+          ]
+      },
+      {
+          "path": "src-b-ui",
+          "package": "UI_Pages_and_Layouts",
+          "versionName": "ver 0.1",
+          "versionNumber": "0.1.5.NEXT",
+          "default": false,
+          "dependencies": [
+              {
+                  "package": "Rollup Helper@15.11.0.10"
+              },
+              {
+                  "package": "Frameworks",
+                  "versionNumber": "0.1.5.LATEST"
+              },
+              {
+                  "package": "Common",
+                  "versionNumber": "0.1.5.LATEST"
+              },
+              {
+                  "package": "Core_CRM",
+                  "versionNumber": "0.1.5.LATEST"
+              },
+              {
+                  "package": "Treatments_and_Appointments",
+                  "versionNumber": "0.1.0.LATEST"
+              }
+          ]
+      },
+      {
+          "path": "src-c-permissions",
+          "package": "Permissions_and_Profiles",
+          "versionName": "ver 0.1",
+          "versionNumber": "0.1.0.0",
+          "default": false,
+          "type": "source",
+          "dependencies": [
+              {
+                  "package": "Rollup Helper@15.11.0.10"
+              },
+              {
+                  "package": "Frameworks",
+                  "versionNumber": "0.1.5.LATEST"
+              },
+              {
+                  "package": "Common",
+                  "versionNumber": "0.1.5.LATEST"
+              },
+              {
+                  "package": "Core_CRM",
+                  "versionNumber": "0.1.5.LATEST"
+              },
+              {
+                  "package": "Treatments_and_Appointments",
+                  "versionNumber": "0.1.0.LATEST"
+              },
+              {
+                  "package": "Org_Wide_Automation",
+                  "versionNumber": "0.1.0.LATEST"
+              },
+              {
+                  "package": "UI_Pages_and_Layouts",
+                  "versionNumber": "0.1.5.LATEST"
+              }
+          ]
+      },
+      {
+          "path": "src-unpackaged",
+          "package": "Unpackaged_Metadata",
+          "versionName": "ver 0.1",
+          "versionNumber": "0.1.5.0",
+          "default": true,
+          "type": "source",
+          "dependencies": [
+              {
+                  "package": "Rollup Helper@15.11.0.10"
+              },
+              {
+                  "package": "Frameworks",
+                  "versionNumber": "0.1.5.LATEST"
+              },
+              {
+                  "package": "Common",
+                  "versionNumber": "0.1.5.LATEST"
+              },
+              {
+                  "package": "Core_CRM",
+                  "versionNumber": "0.1.5.LATEST"
+              },
+              {
+                  "package": "Treatments_and_Appointments",
+                  "versionNumber": "0.1.0.LATEST"
+              },
+              {
+                  "package": "Org_Wide_Automation",
+                  "versionNumber": "0.1.0.LATEST"
+              },
+              {
+                  "package": "UI_Pages_and_Layouts",
+                  "versionNumber": "0.1.5.LATEST"
+              },
+              {
+                  "package": "Permissions_and_Profiles",
+                  "versionNumber": "0.1.0.0"
+              }
+          ]
+      }
+  ],
+  "namespace": "",
+  "sfdcLoginUrl": "https://login.salesforce.com",
+  "sourceApiVersion": "51.0",
+  "packageAliases": {
+      "Rollup Helper@15.11.0.10": "04t6f000000kbWeAAI",
+      "Nintex DocGen@16.5.0.2": "04t2E000003e3K4QAI",
+      "Picklist Merge@1.8.0.2": "04t0M0000016E3BQAU",
+      "Graphics Pack@1.4.0.1": "04t3A000001DXeiQAG",
+      "State Codes@45.1.0.1": "04t4J000000tIvuQAE",
+      "Frameworks": "0Ho4J000000XZoxSAG",
+      "Common": "0Ho4J000000XZpMSAW",
+      "Treatments_and_Appointments": "0Ho4J000000XZpWSAW",
+      "Case_Status_Management": "0Ho4J000000XZq0SAG",
+      "UI_Pages_and_Layouts": "0Ho4J000000XZpCSAW"
+  }
+}
