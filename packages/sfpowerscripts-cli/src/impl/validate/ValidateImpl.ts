@@ -360,7 +360,7 @@ export default class ValidateImpl {
 
       if (scratchOrg && scratchOrg.status==="Assigned") {
           scratchOrgUsername = scratchOrg.username;
-          console.log(`Fetched scratch org ${scratchOrgUsername} from ${pool}`);
+          console.log(`Fetched scratch org ${scratchOrgUsername} from ${pool} LN`);
           break;
         }
     }
