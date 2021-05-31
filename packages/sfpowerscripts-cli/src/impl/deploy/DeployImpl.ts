@@ -268,6 +268,12 @@ export default class DeployImpl {
         error: null,
       };
     } catch (err) {
+      console.log('caught error');
+      console.log('err.status: '+err.status);
+      console.log('err.message: '+err.message);
+      console.log('err.stderr: '+err.stderr);
+      console.log('err.stdout: '+err.stdout);
+
       SFPLogger.log(err, null, this.props.packageLogger, LoggerLevel.INFO);
 
       return {
