@@ -327,6 +327,8 @@ export default class ValidateImpl {
    */
   private authenticateToScratchOrg(scratchOrgUsername: string) {
     try {
+      console.log('attempting to authenticate scratch org');
+      console.log(`sfdx auth:jwt:grant -u ${scratchOrgUsername} -i ${this.props.client_id} -f ${this.props.jwt_key_file} -r https://test.salesforce.com --json`);
       let grantJson = child_process.execSync(
         `sfdx auth:jwt:grant -u ${scratchOrgUsername} -i ${this.props.client_id} -f ${this.props.jwt_key_file} -r https://test.salesforce.com --json`,
         {
@@ -334,6 +336,7 @@ export default class ValidateImpl {
           encoding: "utf8"
         }
       );
+      console.log('Successfully authorized, raw grant: ' + grantJson);
       let grant = JSON.parse(grantJson);
       console.log(`Successfully authorized ${grant.username} with org ID ${grant.orgId}`);
       return grant.result;
