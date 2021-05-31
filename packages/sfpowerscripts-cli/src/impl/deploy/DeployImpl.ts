@@ -176,8 +176,13 @@ export default class DeployImpl {
                   }
                    return failedPackageInstallationResult;
                  }
-              else
-                throw (error)
+              else { 
+                console.log('error.status: '+error.status);
+                console.log('error.message: '+error.message);
+                console.log('error.stderr: '+error.stderr);
+                console.log('error.stdout: '+error.stdout);
+                throw (error);
+              }
             }
 
           }, { retries: 1, minTimeout: 2000 });
@@ -198,6 +203,10 @@ export default class DeployImpl {
           packageInstallationResult.result === PackageInstallationStatus.Failed
         ) {
           failed = queue.slice(i).map((pkg) => pkg.package);
+
+          console.log('packageInstallationResult.message: '+packageInstallationResult.message);
+          console.log('stringified message: '+JSON.stringify(packageInstallationResult.message));
+
           throw new Error(packageInstallationResult.message);
         }
 
