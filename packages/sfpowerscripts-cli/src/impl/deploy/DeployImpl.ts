@@ -68,7 +68,7 @@ export default class DeployImpl {
     let deployed: string[] = [];
     let failed: string[] = [];
     let testFailure: string;
-//    try {
+    try {
       let artifacts = ArtifactFilePathFetcher.fetchArtifactFilePaths(
         this.props.artifactDir
       );
@@ -150,6 +150,7 @@ export default class DeployImpl {
               
               this.displayRetryHeader(this.props.isRetryOnFailure,count);
 
+              console.log('attempting installPackage()');
               let installPackageResult = await this.installPackage(
                 packageType,
                 queue[i].package,
@@ -161,6 +162,8 @@ export default class DeployImpl {
                 pkgDescriptor,
                 false
               );
+              console.log('Got installPackageResult');
+              console.log('installPackageResult: '+installPackageResult);
               if (this.props.isRetryOnFailure && installPackageResult.result === PackageInstallationStatus.Failed && count ==1) {
                {
                   throw new Error(installPackageResult.message)}
@@ -174,6 +177,11 @@ export default class DeployImpl {
                       result : PackageInstallationStatus.Failed,
                        message:error
                   }
+                  console.log('error.message: '+error.message);
+                  console.log('error.stderr: '+error.stderr);
+                  console.log('error.stdout: '+error.stdout);
+                  console.log('error.stack: '+error.stack);
+            
                    return failedPackageInstallationResult;
                  }
               else { 
@@ -237,7 +245,8 @@ export default class DeployImpl {
 
                 if (i !== queue.length - 1)
                   failed = queue.slice(i + 1).map((pkg) => pkg.package);
-
+                  console.log('throwing error: '+testResult.message);
+            
                 throw new Error(testResult.message);
               } else {
                 SFPLogger.log(
@@ -267,22 +276,23 @@ export default class DeployImpl {
         testFailure: testFailure,
         error: null,
       };
-//    } catch (err) {
-//      console.log('caught error');
-//      console.log('err.status: '+err.status);
-//      console.log('err.message: '+err.message);
-//      console.log('err.stderr: '+err.stderr);
-//      console.log('err.stdout: '+err.stdout);
-//
-//      SFPLogger.log(err, null, this.props.packageLogger, LoggerLevel.INFO);
-//
-//      return {
-//        deployed: deployed,
-//        failed: failed,
-//        testFailure: testFailure,
-//        error: err,
-//      };
-//    }
+    } catch (err) {
+      console.log('caught error');
+      console.log('err.status: '+err.status);
+      console.log('err.message: '+err.message);
+      console.log('err.stderr: '+err.stderr);
+      console.log('err.stdout: '+err.stdout);
+      console.log('err.stack: '+err.stack);
+
+      SFPLogger.log(err, null, this.props.packageLogger, LoggerLevel.INFO);
+
+      return {
+        deployed: deployed,
+        failed: failed,
+        testFailure: testFailure,
+        error: err,
+      };
+    }
   }
 
 
@@ -539,6 +549,7 @@ export default class DeployImpl {
 
     if (this.props.deploymentMode == DeploymentMode.NORMAL) {
       if (packageType === "unlocked") {
+        console.log('installing unlocked');
         packageInstallationResult = await this.installUnlockedPackage(
           targetUsername,
           packageMetadata,
@@ -554,6 +565,7 @@ export default class DeployImpl {
           skipTesting: skipTesting,
         };
 
+        console.log('installing source');
         packageInstallationResult = await this.installSourcePackage(
           sfdx_package,
           targetUsername,
@@ -580,6 +592,7 @@ export default class DeployImpl {
           optimizeDeployment: false,
           skipTesting: true,
         };
+        console.log('installing using deploy as source');
 
         packageInstallationResult = await this.installSourcePackage(
           sfdx_package,
