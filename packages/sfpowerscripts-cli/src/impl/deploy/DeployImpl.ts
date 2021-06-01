@@ -68,7 +68,7 @@ export default class DeployImpl {
     let deployed: string[] = [];
     let failed: string[] = [];
     let testFailure: string;
-    try {
+//    try {
       let artifacts = ArtifactFilePathFetcher.fetchArtifactFilePaths(
         this.props.artifactDir
       );
@@ -267,22 +267,22 @@ export default class DeployImpl {
         testFailure: testFailure,
         error: null,
       };
-    } catch (err) {
-      console.log('caught error');
-      console.log('err.status: '+err.status);
-      console.log('err.message: '+err.message);
-      console.log('err.stderr: '+err.stderr);
-      console.log('err.stdout: '+err.stdout);
-
-      SFPLogger.log(err, null, this.props.packageLogger, LoggerLevel.INFO);
-
-      return {
-        deployed: deployed,
-        failed: failed,
-        testFailure: testFailure,
-        error: err,
-      };
-    }
+//    } catch (err) {
+//      console.log('caught error');
+//      console.log('err.status: '+err.status);
+//      console.log('err.message: '+err.message);
+//      console.log('err.stderr: '+err.stderr);
+//      console.log('err.stdout: '+err.stdout);
+//
+//      SFPLogger.log(err, null, this.props.packageLogger, LoggerLevel.INFO);
+//
+//      return {
+//        deployed: deployed,
+//        failed: failed,
+//        testFailure: testFailure,
+//        error: err,
+//      };
+//    }
   }
 
 
@@ -643,6 +643,7 @@ export default class DeployImpl {
     skip_if_package_installed: boolean,
     wait_time: string
   ): Promise<PackageInstallationResult> {
+    console.log('Installing source package');
     let installSourcePackageImpl: InstallSourcePackageImpl = new InstallSourcePackageImpl(
       sfdx_package,
       targetUsername,
