@@ -157,6 +157,7 @@ export default class DeploySourceToOrgImpl {
     SFPLogger.log(`Gathering Final Deployment Status`, null, this.packageLogger);
     let reportAsJSON="";
     try {
+      console.log(`Running command: sfdx force:mdapi:deploy:report --json -i ${deploy_id} -u ${this.target_org}`)
       let filepath=`sfpowerscripts/mdapiDeployReports`;
       fs.mkdirpSync(filepath);
       let child = child_process.exec(
@@ -167,6 +168,8 @@ export default class DeploySourceToOrgImpl {
           maxBuffer: 5*1024*1024
         }
       );
+      console.log('Deploy report ran');
+      console.log('child: '+child.toString());
 
       child.stdout.on("data", (data) => {
         reportAsJSON += data.toString();
@@ -177,16 +180,22 @@ export default class DeploySourceToOrgImpl {
         reportAsJSON += data.toString();
       });
 
+      console.log('reportAsJSON: '+ reportAsJSON);
+      console.log('reportAsJSON stringified: '+ JSON.stringify(reportAsJSON));
+
       await onExit(child);
 
       return "Succesfully Deployed";
     } catch (err) {
+      console.log('Got deployment error');
       let report = JSON.parse(reportAsJSON);
       if(report.result.details.componentFailures && report.result.details.componentFailures.length>0)
       {
+        console.log('Found component failures');
         DeployErrorDisplayer.printMetadataFailedToDeploy(
           report.result.details.componentFailures,this.packageLogger
         );
+        console.log('Returning message: '+report.message);
         return report.message;
       }
       else
