@@ -1,22 +1,21 @@
 import DeploySourceToOrgImpl, { DeploySourceResult } from "../../sfdxwrappers/DeploySourceToOrgImpl";
-import ReconcileProfileAgainstOrgImpl from "@dxatscale/sfpowerscripts.core/lib/sfdxwrappers/ReconcileProfileAgainstOrgImpl";
-import DeployDestructiveManifestToOrgImpl from "@dxatscale/sfpowerscripts.core/lib/sfdxwrappers/DeployDestructiveManifestToOrgImpl";
-import PackageMetadata from "@dxatscale/sfpowerscripts.core/lib/PackageMetadata";
-import ProjectConfig from "@dxatscale/sfpowerscripts.core/lib/project/ProjectConfig";
-import OrgDetails from "@dxatscale/sfpowerscripts.core/lib/org/OrgDetails";
-import SFPStatsSender from "@dxatscale/sfpowerscripts.core/lib/utils/SFPStatsSender";
+import ReconcileProfileAgainstOrgImpl from "../../sfdxwrappers/ReconcileProfileAgainstOrgImpl";
+import DeployDestructiveManifestToOrgImpl from "../../sfdxwrappers/DeployDestructiveManifestToOrgImpl";
+import PackageMetadata from "../../PackageMetadata";
+import ProjectConfig from "../../project/ProjectConfig";
+import OrgDetails from "../../org/OrgDetails";
+import SFPStatsSender from "../../utils/SFPStatsSender";
 import {
   PackageInstallationResult,
   PackageInstallationStatus,
-} from "@dxatscale/sfpowerscripts.core/lib/package/PackageInstallationResult";
-import SFPLogger, {LoggerLevel} from "@dxatscale/sfpowerscripts.core/lib/utils/SFPLogger";
+} from "../../package/PackageInstallationResult";
+import SFPLogger, {LoggerLevel} from "../../utils/SFPLogger";
 
-import ArtifactInstallationStatusChecker from "@dxatscale/sfpowerscripts.core/lib/artifacts/ArtifactInstallationStatusChecker";
-import PackageInstallationHelpers from "@dxatscale/sfpowerscripts.core/lib/utils/PackageInstallationHelpers";
+import ArtifactInstallationStatusChecker from "../../artifacts/ArtifactInstallationStatusChecker";
+import PackageInstallationHelpers from "../../utils/PackageInstallationHelpers";
 
-//import * as fs from "fs-extra";
-const fs = require('fs-extra')
-import ArtifactInstallationStatusUpdater from "@dxatscale/sfpowerscripts.core/lib/artifacts/ArtifactInstallationStatusUpdater";
+import * as fs from "fs-extra";
+import ArtifactInstallationStatusUpdater from "../../artifacts/ArtifactInstallationStatusUpdater";
 const path = require("path");
 const glob = require("glob");
 const os = require("os");

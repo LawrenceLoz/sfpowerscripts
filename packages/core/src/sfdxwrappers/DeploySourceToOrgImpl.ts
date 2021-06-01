@@ -1,15 +1,13 @@
 import child_process = require("child_process");
-import { delay } from "@dxatscale/sfpowerscripts.core/lib/utils/Delay";
-import { onExit } from "@dxatscale/sfpowerscripts.core/lib/utils/OnExit";
-import SFPLogger, { LoggerLevel } from "@dxatscale/sfpowerscripts.core/lib/utils/SFPLogger";
-import PackageEmptyChecker from "@dxatscale/sfpowerscripts.core/lib/package/PackageEmptyChecker";
-import PackageMetadataPrinter from "@dxatscale/sfpowerscripts.core/lib/display/PackageMetadataPrinter";
-import ConvertSourceToMDAPIImpl from "@dxatscale/sfpowerscripts.core/lib/sfdxwrappers/ConvertSourceToMDAPIImpl";
-import PackageManifest from "@dxatscale/sfpowerscripts.core/lib/package/PackageManifest";
-import DeployErrorDisplayer from "@dxatscale/sfpowerscripts.core/lib/display/DeployErrorDisplayer";
-
-//import * as fs from "fs-extra";
-const fs = require('fs-extra')
+import { delay } from "../utils/Delay";
+import { onExit } from "../utils/OnExit";
+import SFPLogger, { LoggerLevel } from "../utils/SFPLogger";
+import PackageEmptyChecker from "../package/PackageEmptyChecker";
+import PackageMetadataPrinter from "../display/PackageMetadataPrinter";
+import ConvertSourceToMDAPIImpl from "./ConvertSourceToMDAPIImpl";
+import PackageManifest from "../package/PackageManifest";
+import DeployErrorDisplayer from "../display/DeployErrorDisplayer";
+import * as fs from "fs-extra";
 
 export interface DeploySourceResult {
   deploy_id: string;
