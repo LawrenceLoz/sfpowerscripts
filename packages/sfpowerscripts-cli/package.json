@@ -8,7 +8,7 @@
   },
   "bugs": "https://github.com/Accenture/sfpowerscripts/issues",
   "dependencies": {
-    "@dxatscale/sfpowerscripts.core": "^11.4.0",
+    "@dxatscale/sfpowerscripts.core": "../core",
     "@oclif/command": "^1",
     "@oclif/config": "^1",
     "@oclif/errors": "^1",
@@ -20,6 +20,7 @@
     "bottleneck": "^2.19.5",
     "cli-table": "^0.3.4",
     "dotenv": "^8.2.0",
+    "file": "^0.2.2",
     "fs-extra": "^9.0.1",
     "glob": "^7.1.6",
     "handlebars": "^4.7.7",
