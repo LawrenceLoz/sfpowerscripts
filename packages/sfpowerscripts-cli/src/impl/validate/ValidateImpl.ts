@@ -49,9 +49,7 @@ export default class ValidateImpl {
 
         //TODO: get accessToken and instanceURL for scratch org
       } else if (this.props.validateMode === ValidateMode.POOL) {
-        let authenticated = await this.authenticateDevHub(this.props.devHubUsername);
-
-        console.log('Authenticated to dev hub: '+authenticated);
+        this.authenticateDevHub(this.props.devHubUsername);
 
         scratchOrgUsername = await this.fetchScratchOrgFromPool(
           this.props.pools,
@@ -163,7 +161,7 @@ export default class ValidateImpl {
     }
   }
 
-  private async authenticateDevHub(devHubUsername: string): Promise<any> {
+  private authenticateDevHub(devHubUsername: string): void {
     console.log('attempting to authenticate DevHub');
     console.log(`sfdx auth:jwt:grant -u ${devHubUsername} -i ${this.props.client_id} -f ${this.props.jwt_key_file} -r https://login.salesforce.com`);
     child_process.execSync(
@@ -173,7 +171,6 @@ export default class ValidateImpl {
         encoding: "utf8"
       }
     );
-    return true;
   }
 
   private deployShapeFile(shapeFile: string, scratchOrgUsername: string): void {
