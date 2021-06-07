@@ -49,7 +49,7 @@ export default class ValidateImpl {
 
         //TODO: get accessToken and instanceURL for scratch org
       } else if (this.props.validateMode === ValidateMode.POOL) {
-        this.authenticateDevHub(this.props.devHubUsername);
+        await this.authenticateDevHub(this.props.devHubUsername);
 
         scratchOrgUsername = await this.fetchScratchOrgFromPool(
           this.props.pools,
@@ -161,7 +161,7 @@ export default class ValidateImpl {
     }
   }
 
-  private authenticateDevHub(devHubUsername: string): void {
+  private async authenticateDevHub(devHubUsername: string) {
     console.log('attempting to authenticate DevHub');
     console.log(`sfdx auth:jwt:grant -u ${devHubUsername} -i ${this.props.client_id} -f ${this.props.jwt_key_file} -r https://login.salesforce.com`);
     child_process.execSync(
