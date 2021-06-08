@@ -338,9 +338,9 @@ export default class ValidateImpl {
           encoding: "utf8"
         }
       );
-      console.log('Successfully authorized, raw grant: ' + grantJson);
+      console.log('Authorized scratch org, raw grant: ' + grantJson);
       let grant = JSON.parse(grantJson);
-      console.log(`Successfully authorized ${grant.username} with org ID ${grant.orgId}`);
+      console.log(`Authorized scratch org ${grant.username} with org ID ${grant.orgId}`);
       return grant.result;
     } catch (err) {
       console.log('Error message from auth attempt: ' + err.message);
